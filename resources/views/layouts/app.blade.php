@@ -25,6 +25,9 @@
         let route_get_users = "{{ route('api.getUsers') }}";
         let route_logout = "{{ route('api.logout') }}";
         let route_get_user = "{{ route('api.getUser') }}";
+        let route_get_user_by_id = "{{ route('api.getUserById') }}";
+        let route_edit_user = "{{ route('api.editUser') }}";
+
 
         let dom_user_item = '{!! str_replace(["\r", "\n"], '', view('users.userItem')) !!}';
     </script>
@@ -119,6 +122,7 @@
 
     @include('auth.modals.register')
     @include('auth.modals.login')
+    @include('users.modals.editUser')
 </body>
 
 </html>
