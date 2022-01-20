@@ -3,6 +3,7 @@
 return [
 
     'edit' => 'Edit',
+    'create' => 'Create',
     
     'firstName' => 'First name',
     'lastName' => 'Last name',

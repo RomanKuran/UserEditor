@@ -27,7 +27,7 @@
         let route_get_user = "{{ route('api.getUser') }}";
         let route_get_user_by_id = "{{ route('api.getUserById') }}";
         let route_edit_user = "{{ route('api.editUser') }}";
-
+        let route_create_user = "{{ route('api.createUser') }}";
 
         let dom_user_item = '{!! str_replace(["\r", "\n"], '', view('users.userItem')) !!}';
     </script>
@@ -62,7 +62,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        {{-- @guest --}}
                         <div class="js-buttons-auth-guest">
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#modalRegister">
@@ -78,38 +77,11 @@
                             <button type="button" class="btn btn-success js-logout">
                                 {{ __('Logout') }}
                             </button>
+                            <span class="js-container-create-user d-none">
+                                <button class="btn btn-success js-check-modal-create-user" data-bs-toggle="modal"
+                                    data-bs-target="#modalCreateUser">{{ __('home.create') }}</button>
+                            </span>
                         </div>
-                        {{-- @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-                        {{-- @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest --}}
                     </ul>
                 </div>
             </div>
@@ -123,6 +95,7 @@
     @include('auth.modals.register')
     @include('auth.modals.login')
     @include('users.modals.editUser')
+    @include('users.modals.createUser')
 </body>
 
 </html>

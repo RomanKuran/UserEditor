@@ -68,8 +68,9 @@ function loginUser(registration_data) {
             localStorage.token = result.token;
             localStorage.user_status = result.user_status;
             getUsers();
-            $('.js-buttons-auth-guest').addClass('d-none');
-            $('.js-buttons-auth-login-user').removeClass('d-none');
+            checkStatusUser();
+            // $('.js-buttons-auth-guest').addClass('d-none');
+            // $('.js-buttons-auth-login-user').removeClass('d-none');
             $('#modalLogin').modal('toggle');
         }
     });
@@ -93,6 +94,9 @@ function checkStatusUser() {
             } else {
                 $('.js-buttons-auth-guest').addClass('d-none');
                 $('.js-buttons-auth-login-user').removeClass('d-none');
+                if(localStorage.user_status == 'admin'){
+                    $('.js-container-create-user').removeClass('d-none');
+                }
             }
         }
     });

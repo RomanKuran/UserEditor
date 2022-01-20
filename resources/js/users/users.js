@@ -20,6 +20,17 @@ $(document).ready(function () {
         editUser(user_id, first_name, last_name, email, password);
     })
     // ----
+
+    // event create user
+    $(document).on('click', '.js-create-user', function () {
+        let first_name = $('.js-form-create-user input[name=first_name]').val();
+        let last_name = $('.js-form-create-user input[name=last_name]').val();
+        let email = $('.js-form-create-user input[name=email]').val();
+        let password = $('.js-form-create-user input[name=password]').val();
+
+        createUser(first_name, last_name, email, password);
+    })
+    // ----
 });
 
 // function get users
@@ -99,6 +110,27 @@ function editUser(user_id, first_name, last_name, email, password) {
         success: function (result) {
             getUsers();
             $('#modalEditUser').modal('toggle');
+        }
+    });
+}
+// ----
+
+// function create user
+function createUser(first_name, last_name, email, password) {
+    $.ajax({
+        type: "POST",
+        url: route_create_user,
+        dataType: 'json',
+        data: {
+            token: localStorage.token,
+            firstName: first_name,
+            lastName: last_name,
+            email: email,
+            password: password,
+        },
+        success: function (result) {
+            getUsers();
+            $('#modalCreateUser').modal('toggle');
         }
     });
 }

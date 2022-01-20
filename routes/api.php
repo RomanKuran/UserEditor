@@ -17,6 +17,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::group(['middleware' => ['jwt.is_admin']], function () {
         Route::get('get_user_by_id', [App\Http\Controllers\Users\GetUserByIdController::class, 'get'])->name('api.getUserById');
         Route::post('edit_user', [App\Http\Controllers\Users\EditUserController::class, 'edit'])->name('api.editUser');
+        Route::post('create_user', [App\Http\Controllers\Users\CreateUserController::class, 'create'])->name('api.createUser');
     });
 
 
